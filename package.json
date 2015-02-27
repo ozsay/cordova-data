@@ -10,6 +10,9 @@
     "url": "https://github.com/ozsay/cordova-data.git"
   },
   "devDependencies": {
+    "canonical-path": "0.0.2",
+    "dgeni": "^0.4.1",
+    "dgeni-packages": "^0.10.10",
     "gulp": "^3.8.11",
     "gulp-concat": "^2.5.2",
     "gulp-footer": "^1.0.5",

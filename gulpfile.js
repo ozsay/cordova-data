@@ -1,4 +1,5 @@
 var path   = require('path'),
+    Dgeni  = require('dgeni'),
     gulp   = require('gulp'),
     concat = require('gulp-concat'),
     footer = require('gulp-footer'),
@@ -42,4 +43,10 @@ gulp.task('tdd', function (done) {
   karma.start({
     configFile: __dirname + '/karma.conf.js'
   }, done);
+});
+
+gulp.task('docs', function() {
+    var dgeni = new Dgeni([require('./docs-gen.conf')]);
+    
+    return dgeni.generate();
 });
