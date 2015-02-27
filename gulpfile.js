@@ -46,7 +46,7 @@ gulp.task('tdd', function (done) {
 });
 
 gulp.task('docs', function() {
-    var dgeni = new Dgeni([require('./docs-gen.conf')]);
+    var dgeni = new Dgeni([require('./docs/docs-gen.conf')]);
     
     return dgeni.generate();
 });
