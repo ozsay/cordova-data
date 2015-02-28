@@ -1,0 +1,41 @@
+<h3> cordovaDeviceOrientation</h3>
+<p>Checks direction or heading that the device is pointed.
+The directive watches the direction and update the scopes on changes.</p>
+
+<h4>Installation:</h4><pre class="prettyprint"><code ng-non-bindable class="lang-bash">cordova plugin add org.apache.cordova.device-orientation
+</code></pre>
+<p>Tested against plugin version r0.3.11 specification.</p>
+<h4>Official Docs:</h4>
+<p><a href="https://github.com/apache/cordova-plugin-device-orientation/blob/master/doc/index.md">https://github.com/apache/cordova-plugin-device-orientation/blob/master/doc/index.md</a></p>
+<h4>Usage:</h4>
+<pre class="prettyprint"><code ng-non-bindable class="lang-html">&lt;ANY cordova-device-orientation=&quot;expression&quot;&gt;&#10;...&#10;&lt;/ANY&gt;</code></pre><h4>Params:</h4>
+<table class="table table-responsive table-condensed table-hover Param-table">
+	<thead>
+		<tr>
+			<th class="param-col">Param</th>
+			<th class="type-col">Type</th>
+			<th class="details-col">Details</th>
+		</tr>
+ 	</thead>
+ 	<tbody><tr>
+ 			<td>cordovaDeviceOrientation</td>
+ 			<td>expression</td>
+ 			<td><p><a href="https://docs.angularjs.org/guide/expression">Expression</a> which evaluates to an
+object that represent update options with &#39;filter&#39; or &#39;frequency&#39; as keys. Check the <a href="https://github.com/apache/cordova-plugin-device-orientation/blob/master/doc/index.md#navigatorcompasswatchheading">official guide</a> for more info. Default value is frequency=100. see examples.</p>
+</td>
+ 		</tr></tbody>
+</table>
+
+<h4>Examples:</h4><pre class="prettyprint"><code ng-non-bindable class="lang-html">&lt;div cordova-device-orientation&gt;
+Current heading is updating every 100 millis and is {{deviceOrientation.magneticHeading}}.
+&lt;/div&gt;
+</code></pre>
+<pre class="prettyprint"><code ng-non-bindable class="lang-html">&lt;div cordova-device-orientation=&quot;{frequency: 500}&quot;&gt;
+Current heading is updating every 500 millis and is {{deviceOrientation.magneticHeading}}.
+&lt;/div&gt;
+</code></pre>
+<pre class="prettyprint"><code ng-non-bindable class="lang-html">&lt;div cordova-device-orientation=&quot;{filter: 30}&quot;&gt;
+Current heading is {{deviceOrientation.magneticHeading}}.
+Only updates when the change in degrees is over 30.
+&lt;/div&gt;
+</code></pre>

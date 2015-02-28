@@ -1,0 +1,49 @@
+body { 
+    padding-top: 70px;
+}
+
+.side-bar {
+    margin-top: 15px;
+}
+
+.side-bar span {
+    line-height: 5px;
+    font-size: 14px;
+}
+
+[ui-view].ng-enter, [ui-view].ng-leave {
+    position: absolute;
+    width: 100%;
+    -webkit-transition:all .5s ease-in-out;
+    -moz-transition:all .5s ease-in-out;
+    -o-transition:all .5s ease-in-out;
+    transition:all .5s ease-in-out;
+}
+
+[ui-view].ng-enter {
+    -webkit-transition-delay: .5s;
+    transition-delay: .5s;
+    opacity: 0;
+    transform: translate(0, -100%);
+}
+
+[ui-view].ng-enter-active {
+    -webkit-transition-delay: .5s;
+    transition-delay: .5s;
+    opacity: 1;
+    transform: translate(0, 0);
+}
+
+[ui-view].ng-leave {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+
+[ui-view].ng-leave-active {
+    opacity: 0;
+    transform: translate(0, -100%);
+}
+
+.Param-table .param-col, .Param-table .type-col {
+    width: 10%;
+}

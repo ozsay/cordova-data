@@ -1,0 +1,22 @@
+<div class="col-md-2" ng-include="'partials/sideMenu.html'"></div>
+<div class="col-md-9 container">
+    <div class="row" ui-view="api">
+        <h4>The basic usage (or work flow) is as follows:</h4>
+        <ol>
+            <li><p><a href ui-sref="download">Download</a> the library and add it to your project.</p></li>
+            <li><p>Install the cordova plugins that fetch the data from the device according to the list below (only the desirable ones).</p></li>
+            <li><p>Use the directives according to each directive usage details.</p></li>
+        </ol>
+        <h4>Available data:</h4>
+        <ul>
+            <li ng-repeat="document in documents">
+                {{document.data}}
+                <ul>
+                    <li ng-repeat="plugin in document.plugins">
+                        <a ng-href="{{plugin.url}}">{{plugin.id}}</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>

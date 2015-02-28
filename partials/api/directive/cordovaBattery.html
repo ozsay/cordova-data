@@ -1,0 +1,16 @@
+<h3> cordovaBattery</h3>
+<p>Fetches the current battery status.
+The directive keeps updating the scope on battery changes.</p>
+
+<h4>Installation:</h4><pre class="prettyprint"><code ng-non-bindable class="lang-bash">cordova plugin add org.apache.cordova.battery-status
+</code></pre>
+<p>Tested against plugin version r0.2.12 specification.</p>
+<h4>Official Docs:</h4>
+<p><a href="https://github.com/apache/cordova-plugin-battery-status/blob/master/doc/index.md">https://github.com/apache/cordova-plugin-battery-status/blob/master/doc/index.md</a></p>
+<h4>Usage:</h4>
+<pre class="prettyprint"><code ng-non-bindable class="lang-html">&lt;ANY cordova-battery&gt;&#10;...&#10;&lt;/ANY&gt;</code></pre>
+<h4>Examples:</h4><pre class="prettyprint"><code ng-non-bindable class="lang-html">&lt;div cordova-battery&gt;
+Battery level: {{battery.level}}
+Is device charging?: {{battery.isPlugged}}
+&lt;/div&gt;
+</code></pre>

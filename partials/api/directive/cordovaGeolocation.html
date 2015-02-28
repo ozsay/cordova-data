@@ -1,0 +1,36 @@
+<h3> cordovaGeolocation</h3>
+<p>Checks the current position of the device.
+The directive watches the position and update the scopes on changes.</p>
+
+<h4>Installation:</h4><pre class="prettyprint"><code ng-non-bindable class="lang-bash">cordova plugin add org.apache.cordova.geolocation
+</code></pre>
+<p>Tested against plugin version r0.3.12 specification.</p>
+<h4>Official Docs:</h4>
+<p><a href="https://github.com/apache/cordova-plugin-geolocation/blob/master/doc/index.md">https://github.com/apache/cordova-plugin-geolocation/blob/master/doc/index.md</a></p>
+<h4>Usage:</h4>
+<pre class="prettyprint"><code ng-non-bindable class="lang-html">&lt;ANY cordova-geolocation=&quot;expression&quot;&gt;&#10;...&#10;&lt;/ANY&gt;</code></pre><h4>Params:</h4>
+<table class="table table-responsive table-condensed table-hover Param-table">
+	<thead>
+		<tr>
+			<th class="param-col">Param</th>
+			<th class="type-col">Type</th>
+			<th class="details-col">Details</th>
+		</tr>
+ 	</thead>
+ 	<tbody><tr>
+ 			<td>cordovaGeolocation</td>
+ 			<td>expression</td>
+ 			<td><p><a href="https://docs.angularjs.org/guide/expression">Expression</a> which evaluates to an object
+whose keys are sent to the plugins and affect position retrieval. Check the <a href="https://github.com/apache/cordova-plugin-geolocation/blob/master/doc/index.md#geolocationoptions">official guide</a> for more info. see examples.</p>
+</td>
+ 		</tr></tbody>
+</table>
+
+<h4>Examples:</h4><pre class="prettyprint"><code ng-non-bindable class="lang-html">&lt;div cordova-geolocation&gt;
+Current latitude is {{position.coords.latitude}}.
+&lt;/div&gt;
+</code></pre>
+<pre class="prettyprint"><code ng-non-bindable class="lang-html">&lt;div cordova-geolocation=&quot;{ maximumAge: 3000, timeout: 5000, enableHighAccuracy: true }&quot;&gt;
+Current latitude is {{position.coords.latitude}}.
+&lt;/div&gt;
+</code></pre>

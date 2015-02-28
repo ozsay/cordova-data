@@ -1,0 +1,36 @@
+<h3> cordovaDeviceMotion</h3>
+<p>Checks the change (delta) in movement relative to the current device orientation, in three dimensions along the x, y, and z axis.
+The directive watches the movement and update the scopes on changes.</p>
+
+<h4>Installation:</h4><pre class="prettyprint"><code ng-non-bindable class="lang-bash">cordova plugin add org.apache.cordova.device-motion
+</code></pre>
+<p>Tested against plugin version r0.2.11 specification.</p>
+<h4>Official Docs:</h4>
+<p><a href="https://github.com/apache/cordova-plugin-device-motion/blob/master/doc/index.md">https://github.com/apache/cordova-plugin-device-motion/blob/master/doc/index.md</a></p>
+<h4>Usage:</h4>
+<pre class="prettyprint"><code ng-non-bindable class="lang-html">&lt;ANY cordova-device-motion=&quot;expression&quot;&gt;&#10;...&#10;&lt;/ANY&gt;</code></pre><h4>Params:</h4>
+<table class="table table-responsive table-condensed table-hover Param-table">
+	<thead>
+		<tr>
+			<th class="param-col">Param</th>
+			<th class="type-col">Type</th>
+			<th class="details-col">Details</th>
+		</tr>
+ 	</thead>
+ 	<tbody><tr>
+ 			<td>cordovaDeviceMotion</td>
+ 			<td>expression</td>
+ 			<td><p><a href="https://docs.angularjs.org/guide/expression">Expression</a> which evaluates to number
+that represent the frequency of updates. Check the <a href="https://github.com/apache/cordova-plugin-device-motion/blob/master/doc/index.md#navigatoraccelerometerwatchacceleration">official guide</a> for more info. Default value is frequency=10000. see examples.</p>
+</td>
+ 		</tr></tbody>
+</table>
+
+<h4>Examples:</h4><pre class="prettyprint"><code ng-non-bindable class="lang-html">&lt;div cordova-device-motion&gt;
+Current acceleration is updating every 10 seconds and the x axis is {{deviceMotion.x}}.
+&lt;/div&gt;
+</code></pre>
+<pre class="prettyprint"><code ng-non-bindable class="lang-html">&lt;div cordova-device-orientation=&quot;100&quot;&gt;
+Current acceleration is updating every 100 millis and the x axis is {{deviceMotion.x}}.
+&lt;/div&gt;
+</code></pre>

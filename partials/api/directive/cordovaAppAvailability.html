@@ -1,0 +1,46 @@
+<h3> cordovaAppAvailability</h3>
+<p>Checks installed applications</p>
+
+<h4>Installation:</h4><pre class="prettyprint"><code ng-non-bindable class="lang-bash">cordova plugin add https://github.com/ohh2ahh/AppAvailability.git
+</code></pre>
+<p>Tested against plugin version 0.3.1 specification.</p>
+<h4>Official Docs:</h4>
+<p><a href="https://github.com/ohh2ahh/AppAvailability">https://github.com/ohh2ahh/AppAvailability</a></p>
+<h4>Usage:</h4>
+<pre class="prettyprint"><code ng-non-bindable class="lang-html">&lt;ANY cordova-app-availability=&quot;expression&quot;&gt;&#10;...&#10;&lt;/ANY&gt;</code></pre><h4>Params:</h4>
+<table class="table table-responsive table-condensed table-hover Param-table">
+	<thead>
+		<tr>
+			<th class="param-col">Param</th>
+			<th class="type-col">Type</th>
+			<th class="details-col">Details</th>
+		</tr>
+ 	</thead>
+ 	<tbody><tr>
+ 			<td>cordovaAppAvailability</td>
+ 			<td>expression</td>
+ 			<td><p><a href="https://docs.angularjs.org/guide/expression">Expression</a> which evaluates to an
+object, an array or a string. When string, it is being checked as uri scheme and
+result accessible from scope.appAvailability.
+When object, it&#39;s values are being checked and accessible as object whose keys are the
+corresponding keys from the original object.
+When array, it&#39;s elements are being checked and accessible as array whose elements are the
+results in the same order as the original array. see examples.</p>
+</td>
+ 		</tr></tbody>
+</table>
+
+<h4>Examples:</h4><pre class="prettyprint"><code ng-non-bindable class="lang-html">&lt;div cordova-app-availability=&quot;&#39;twitter://&#39;&quot;&gt;
+Twitter is {{appAvailability ? &#39;&#39; : &#39;not&#39;}} available.
+&lt;/div&gt;
+</code></pre>
+<pre class="prettyprint"><code ng-non-bindable class="lang-html">&lt;div cordova-app-availability=&quot;{twitter: &#39;twitter://&#39;, facebook: &#39;fb://&#39;}&quot;&gt;
+Twitter is {{appAvailability.twitter ? &#39;&#39; : &#39;not&#39;}} available.
+Facebook is {{appAvailability.facebook ? &#39;&#39; : &#39;not&#39;}} available.
+&lt;/div&gt;
+</code></pre>
+<pre class="prettyprint"><code ng-non-bindable class="lang-html">&lt;div cordova-app-availability=&quot;[&#39;twitter://&#39;, &#39;fb://&#39;]&quot;&gt;
+Twitter is {{appAvailability[0] ? &#39;&#39; : &#39;not&#39;}} available.
+Facebook is {{appAvailability[1] ? &#39;&#39; : &#39;not&#39;}} available.
+&lt;/div&gt;
+</code></pre>

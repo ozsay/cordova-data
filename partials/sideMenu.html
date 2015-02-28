@@ -1,0 +1,8 @@
+<div>
+    <input type="text" class="form-control" ng-model="documentQuery" placeholder="Search docs">
+    <ul class="nav nav-pills nav-stacked side-bar">
+        <li role="presentation" ng-repeat="document in documents | filter:documentQuery" ui-sref-active="active">
+            <a href ui-sref="api.{{document.name}}">{{document.name}}<span class="pull-right">{{document.type}}</span></a>
+        </li>
+    </ul>
+</div>
