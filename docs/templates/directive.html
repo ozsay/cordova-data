@@ -1,0 +1,42 @@
+<h3> {$ doc.name $}</h3>
+{$ doc.description | marked $}
+<h4>Installation:</h4>
+{%- if doc.pluginInstall -%}
+{$ doc.pluginInstall | marked | code $}
+{%- endif -%}
+<p>Tested against plugin version {$ doc.pluginVersion $} specification.</p>
+<h4>Official Docs:</h4>
+<p><a href="{$ doc.pluginUrl $}">{$ doc.pluginUrl $}</a></p>
+<h4>Usage:</h4>
+<pre class="prettyprint"><code ng-non-bindable class="lang-html">&lt;{$ doc.element $} {$ doc.name | dashCase $}
+{%- if ((doc.params.length == 1) and (doc.params[0].name == doc.name)) -%}
+=&quot;{$ doc.params[0].typeList $}&quot;
+{%- endif -%}
+&gt;&#10;...&#10;&lt;/{$ doc.element $}&gt;</code></pre>
+{%- if doc.params -%}
+<h4>Params:</h4>
+<table class="table table-responsive table-condensed table-hover Param-table">
+	<thead>
+		<tr>
+			<th class="param-col">Param</th>
+			<th class="type-col">Type</th>
+			<th class="details-col">Details</th>
+		</tr>
+ 	</thead>
+ 	<tbody>
+{%- for param in doc.params -%}
+ 		<tr>
+ 			<td>{$ param.name $}</td>
+ 			<td>{$ param.typeList $}</td>
+ 			<td>{$ param.description | marked $}</td>
+ 		</tr>
+{%- endfor -%}
+ 	</tbody>
+</table>
+{% endif -%}
+{%- if doc.examples %}
+<h4>Examples:</h4>
+{%- for example in doc.examples -%}
+{$ example | marked | code $}
+{%- endfor -%}
+{% endif -%}

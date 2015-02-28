@@ -1,5 +1,6 @@
 var path   = require('path'),
     Dgeni  = require('dgeni'),
+    del    = require('del'),
     gulp   = require('gulp'),
     concat = require('gulp-concat'),
     footer = require('gulp-footer'),
@@ -45,7 +46,11 @@ gulp.task('tdd', function (done) {
   }, done);
 });
 
-gulp.task('docs', function() {
+gulp.task('clean', function (done) {
+  del(['dist/docs'], done);
+});
+
+gulp.task('docs', ['clean'], function() {
     var dgeni = new Dgeni([require('./docs/docs-gen.conf')]);
     
     return dgeni.generate();
