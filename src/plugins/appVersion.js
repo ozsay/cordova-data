@@ -1,4 +1,29 @@
 angular.module('cordovaData.appVersion', [])
+/**
+ * @ngdoc directive
+ * @name cordovaAppVersion
+ * @data Application version
+ * @restrict A
+ *
+ * @description
+ * Fetches the application version.
+ * 
+ * @pluginId uk.co.whiteoctober.cordova.appversion
+ * @pluginUrl https://github.com/whiteoctober/cordova-plugin-app-version
+ * @pluginInstall 
+ * ```bash
+ * cordova plugin add https://github.com/whiteoctober/cordova-plugin-app-version.git
+ * ```
+ * @pluginVersion 0.1.5
+ *
+ * @example
+ * ```html
+ * <div cordova-app-version>
+ * Version number: {{appVersion.number}}
+ * Version code: {{appVersion.code}}
+ * </div>
+ * ```
+ */
 .directive('cordovaAppVersion', ['$window', '$timeout', function($window, $timeout) {
     return {
         restrict: 'A',
