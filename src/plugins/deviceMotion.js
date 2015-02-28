@@ -29,7 +29,7 @@ angular.module('cordovaData.deviceMotion', [])
  * ```
  * @example
  * ```html
- * <div cordova-device-orientation="100">
+ * <div cordova-device-motion="100">
  * Current acceleration is updating every 100 millis and the x axis is {{deviceMotion.x}}.
  * </div>
  * ```
