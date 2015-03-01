@@ -2,14 +2,16 @@ describe("appAvailability", function() {
     var $compile,
         $rootScope,
         $window,
+        $document,
         $timeout;
 
     beforeEach(module('cordovaData.appAvailability'));
 
-    beforeEach(inject(function(_$compile_, _$rootScope_, _$window_, _$timeout_) {
+    beforeEach(inject(function(_$compile_, _$rootScope_, _$window_, _$document_, _$timeout_) {
         $compile = _$compile_;
         $rootScope = _$rootScope_;
         $window = _$window_;
+        $document = _$document_;
         $timeout = _$timeout_;
         
         $window.appAvailability = {
@@ -22,7 +24,7 @@ describe("appAvailability", function() {
     
     it("istalled application check is injected into scope", function() {
         $compile('<div cordova-app-availability="\'twitter://\'"></div>')($rootScope);
-        document.dispatchEvent(new Event('deviceready'));
+        $document[0].dispatchEvent(new Event('deviceready'));
         
         $rootScope.$digest();
         
@@ -33,7 +35,7 @@ describe("appAvailability", function() {
     
     it("view is updated after injection", function() {
         var element = $compile('<div cordova-app-availability="\'twitter://\'">{{appAvailability}}</div>')($rootScope);
-        document.dispatchEvent(new Event('deviceready'));
+        $document[0].dispatchEvent(new Event('deviceready'));
         
         $rootScope.$digest();
         
@@ -44,7 +46,7 @@ describe("appAvailability", function() {
     
     it("expression evaluates to string", function() {
         $compile('<div cordova-app-availability="\'twitter://\'"></div>')($rootScope);
-        document.dispatchEvent(new Event('deviceready'));
+        $document[0].dispatchEvent(new Event('deviceready'));
         
         $rootScope.$digest();
         
@@ -55,7 +57,7 @@ describe("appAvailability", function() {
     
     it("expression evaluates to object", function() {
         $compile('<div cordova-app-availability="{twitter: \'twitter://\'}"></div>')($rootScope);
-        document.dispatchEvent(new Event('deviceready'));
+        $document[0].dispatchEvent(new Event('deviceready'));
         
         $rootScope.$digest();
         
@@ -66,7 +68,7 @@ describe("appAvailability", function() {
     
     it("expression evaluates to object with multiple properties", function() {
         $compile('<div cordova-app-availability="{twitter: \'twitter://\', facebook: \'fb://\'}"></div>')($rootScope);
-        document.dispatchEvent(new Event('deviceready'));
+        $document[0].dispatchEvent(new Event('deviceready'));
         
         $rootScope.$digest();
         
@@ -78,7 +80,7 @@ describe("appAvailability", function() {
     
     it("expression evaluates to array", function() {
         $compile('<div cordova-app-availability="[\'twitter://\']"></div>')($rootScope);
-        document.dispatchEvent(new Event('deviceready'));
+        $document[0].dispatchEvent(new Event('deviceready'));
         
         $rootScope.$digest();
         
@@ -89,7 +91,7 @@ describe("appAvailability", function() {
     
     it("expression evaluates to array with multiple elements", function() {
         $compile('<div cordova-app-availability="[\'twitter://\', \'fb://\']"></div>')($rootScope);
-        document.dispatchEvent(new Event('deviceready'));
+        $document[0].dispatchEvent(new Event('deviceready'));
         
         $rootScope.$digest();
         
@@ -104,7 +106,7 @@ describe("appAvailability", function() {
         
         $rootScope.filter = 'twitter://';
         
-        document.dispatchEvent(new Event('deviceready'));
+        $document[0].dispatchEvent(new Event('deviceready'));
         
         $rootScope.$digest();
         

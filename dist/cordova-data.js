@@ -50,9 +50,9 @@ angular.module('cordovaData.appAvailability', [])
  * </div>
  * ```
  */
-.directive('cordovaAppAvailability', ['$window', '$timeout', function($window, $timeout) {
+.directive('cordovaAppAvailability', ['$document', '$window', '$timeout', function($document, $window, $timeout) {
     function checkAndUpdate(uri, scope, key) {
-        appAvailability.check(
+        $window.appAvailability.check(
             uri,
             function() {
                 $timeout(function() {
@@ -78,7 +78,7 @@ angular.module('cordovaData.appAvailability', [])
     return {
         restrict: 'A',
         link: function(scope, element, attrs) {
-            document.addEventListener("deviceready", function() {
+            $document[0].addEventListener("deviceready", function() {
                 if ($window.appAvailability.check !== undefined) {
                     scope.$watchCollection(attrs.cordovaAppAvailability, function(apps) {
                         if (angular.isString(apps)) {
@@ -121,11 +121,11 @@ angular.module('cordovaData.appVersion', [])
  * </div>
  * ```
  */
-.directive('cordovaAppVersion', ['$window', '$timeout', function($window, $timeout) {
+.directive('cordovaAppVersion', ['$document', '$window', '$timeout', function($document, $window, $timeout) {
     return {
         restrict: 'A',
         link: function(scope, element, attrs) {
-            document.addEventListener("deviceready", function() {
+            $document[0].addEventListener("deviceready", function() {
                 $timeout(function() {
                     scope.appVersion = {};
 
@@ -258,12 +258,12 @@ angular.module('cordovaData.deviceMotion', [])
  * ```
  * @example
  * ```html
- * <div cordova-device-orientation="100">
+ * <div cordova-device-motion="100">
  * Current acceleration is updating every 100 millis and the x axis is {{deviceMotion.x}}.
  * </div>
  * ```
  */
-.directive('cordovaDeviceMotion', ['$window', '$timeout', function($window, $timeout) {
+.directive('cordovaDeviceMotion', ['$document', '$window', '$timeout', function($document, $window, $timeout) {
     function watch(scope, frequency) {
         return $window.navigator.accelerometer.watchAcceleration(function(acceleration) {
             $timeout(function() {
@@ -279,7 +279,7 @@ angular.module('cordovaData.deviceMotion', [])
     return {
         restrict: 'A',
         link: function(scope, element, attrs) {
-            document.addEventListener("deviceready", function() {
+            $document[0].addEventListener("deviceready", function() {
                 if ($window.navigator.accelerometer.watchAcceleration !== undefined) {
                     var watchID;
                     
@@ -305,6 +305,7 @@ angular.module('cordovaData.deviceMotion', [])
         }
     };
 }]);
+
 angular.module('cordovaData.deviceOrientation', [])
 /**
  * @ngdoc directive
@@ -348,7 +349,7 @@ angular.module('cordovaData.deviceOrientation', [])
  * </div>
  * ```
  */
-.directive('cordovaDeviceOrientation', ['$window', '$timeout', function($window, $timeout) {
+.directive('cordovaDeviceOrientation', ['$document', '$window', '$timeout', function($document, $window, $timeout) {
     function watch(scope, compassOptions) {
         return $window.navigator.compass.watchHeading(function(heading) {
             $timeout(function() {
@@ -364,7 +365,7 @@ angular.module('cordovaData.deviceOrientation', [])
     return {
         restrict: 'A',
         link: function(scope, element, attrs) {
-            document.addEventListener("deviceready", function() {
+            $document[0].addEventListener("deviceready", function() {
                 if ($window.navigator.compass.watchHeading !== undefined) {
                     var watchID;
                     
@@ -426,7 +427,7 @@ angular.module('cordovaData.geolocation', [])
  * </div>
  * ```
  */
-.directive('cordovaGeolocation', ['$window', '$timeout', function($window, $timeout) {
+.directive('cordovaGeolocation', ['$document', '$window', '$timeout', function($document, $window, $timeout) {
     function watch(scope, geolocationOptions) {
         return $window.navigator.geolocation.watchPosition(function(position) {
             $timeout(function() {
@@ -442,7 +443,7 @@ angular.module('cordovaData.geolocation', [])
     return {
         restrict: 'A',
         link: function(scope, element, attrs) {
-            document.addEventListener("deviceready", function() {
+            $document[0].addEventListener("deviceready", function() {
                 if ($window.navigator.geolocation.watchPosition !== undefined) {
                     var watchID;
                     

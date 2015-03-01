@@ -17,7 +17,7 @@ Device model: {{device.model}}
 
 ```js
 myApp.controller('deviceController', ['$scope', '$window', '$document', function($scope, $window, $document) {
-  $document.addEventListener("deviceready", function() {
+  $document[0].addEventListener("deviceready", function() {
     $scope.device = $window.device;
   }, false);
 }]);

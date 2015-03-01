@@ -41,7 +41,7 @@ angular.module('cordovaData.deviceOrientation', [])
  * </div>
  * ```
  */
-.directive('cordovaDeviceOrientation', ['$window', '$timeout', function($window, $timeout) {
+.directive('cordovaDeviceOrientation', ['$document', '$window', '$timeout', function($document, $window, $timeout) {
     function watch(scope, compassOptions) {
         return $window.navigator.compass.watchHeading(function(heading) {
             $timeout(function() {
@@ -57,7 +57,7 @@ angular.module('cordovaData.deviceOrientation', [])
     return {
         restrict: 'A',
         link: function(scope, element, attrs) {
-            document.addEventListener("deviceready", function() {
+            $document[0].addEventListener("deviceready", function() {
                 if ($window.navigator.compass.watchHeading !== undefined) {
                     var watchID;
                     

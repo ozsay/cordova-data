@@ -1,6 +1,6 @@
 {
   "name": "cordova-data",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "angularjs directives that extract data from the device into your scopes",
   "scripts": {
     "test": "gulp test"

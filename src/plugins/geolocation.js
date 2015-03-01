@@ -34,7 +34,7 @@ angular.module('cordovaData.geolocation', [])
  * </div>
  * ```
  */
-.directive('cordovaGeolocation', ['$window', '$timeout', function($window, $timeout) {
+.directive('cordovaGeolocation', ['$document', '$window', '$timeout', function($document, $window, $timeout) {
     function watch(scope, geolocationOptions) {
         return $window.navigator.geolocation.watchPosition(function(position) {
             $timeout(function() {
@@ -50,7 +50,7 @@ angular.module('cordovaData.geolocation', [])
     return {
         restrict: 'A',
         link: function(scope, element, attrs) {
-            document.addEventListener("deviceready", function() {
+            $document[0].addEventListener("deviceready", function() {
                 if ($window.navigator.geolocation.watchPosition !== undefined) {
                     var watchID;
                     

@@ -3,14 +3,16 @@ describe("deviceOrientation", function() {
         $rootScope,
         $window,
         $timeout,
+        $document,
         _success;
 
     beforeEach(module('cordovaData.deviceOrientation'));
 
-    beforeEach(inject(function(_$compile_, _$rootScope_, _$window_, _$timeout_) {
+    beforeEach(inject(function(_$compile_, _$rootScope_, _$window_, _$document_, _$timeout_) {
         $compile = _$compile_;
         $rootScope = _$rootScope_;
         $window = _$window_;
+        $document = _$document_;
         $timeout = _$timeout_;
         
         $window.navigator.compass = {
@@ -36,7 +38,7 @@ describe("deviceOrientation", function() {
     
     it("Device heading is injected into scope", function() {
         $compile('<div cordova-device-orientation></div>')($rootScope);
-        document.dispatchEvent(new Event('deviceready'));
+        $document[0].dispatchEvent(new Event('deviceready'));
         
         setInterval(function() {
             _success({magneticHeading: 300});
@@ -50,7 +52,7 @@ describe("deviceOrientation", function() {
     
     it("view is updated after change", function() {
         var element = $compile('<div cordova-device-orientation>{{deviceOrientation.magneticHeading}}</div>')($rootScope);
-        document.dispatchEvent(new Event('deviceready'));
+        $document[0].dispatchEvent(new Event('deviceready'));
         
         setInterval(function() {
             _success({magneticHeading: 300});
@@ -64,7 +66,7 @@ describe("deviceOrientation", function() {
     
     it("scope is updated after every change", function() {
         var element = $compile('<div cordova-device-orientation></div>')($rootScope);
-        document.dispatchEvent(new Event('deviceready'));
+        $document[0].dispatchEvent(new Event('deviceready'));
         
         var i = 0;
         
@@ -85,7 +87,7 @@ describe("deviceOrientation", function() {
     
     it("Calling stop watch on scope destroy", function() {
         $compile('<div cordova-device-orientation></div>')($rootScope);
-        document.dispatchEvent(new Event('deviceready'));
+        $document[0].dispatchEvent(new Event('deviceready'));
         
         setInterval(function() {
             _success({magneticHeading: 300});
@@ -104,7 +106,7 @@ describe("deviceOrientation", function() {
     
     it("scope is updated with options", function() {
         var element = $compile('<div cordova-device-orientation="{frequency: 500}"></div>')($rootScope);
-        document.dispatchEvent(new Event('deviceready'));
+        $document[0].dispatchEvent(new Event('deviceready'));
         
         $rootScope.$digest();
         
@@ -119,7 +121,7 @@ describe("deviceOrientation", function() {
     
     it("restart watch after options changing", function() {
         var element = $compile('<div cordova-device-orientation="options"></div>')($rootScope);
-        document.dispatchEvent(new Event('deviceready'));
+        $document[0].dispatchEvent(new Event('deviceready'));
         
         var i = 300;
         

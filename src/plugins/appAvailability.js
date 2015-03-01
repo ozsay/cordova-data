@@ -46,9 +46,9 @@ angular.module('cordovaData.appAvailability', [])
  * </div>
  * ```
  */
-.directive('cordovaAppAvailability', ['$window', '$timeout', function($window, $timeout) {
+.directive('cordovaAppAvailability', ['$document', '$window', '$timeout', function($document, $window, $timeout) {
     function checkAndUpdate(uri, scope, key) {
-        appAvailability.check(
+        $window.appAvailability.check(
             uri,
             function() {
                 $timeout(function() {
@@ -74,7 +74,7 @@ angular.module('cordovaData.appAvailability', [])
     return {
         restrict: 'A',
         link: function(scope, element, attrs) {
-            document.addEventListener("deviceready", function() {
+            $document[0].addEventListener("deviceready", function() {
                 if ($window.appAvailability.check !== undefined) {
                     scope.$watchCollection(attrs.cordovaAppAvailability, function(apps) {
                         if (angular.isString(apps)) {

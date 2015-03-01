@@ -34,7 +34,7 @@ angular.module('cordovaData.deviceMotion', [])
  * </div>
  * ```
  */
-.directive('cordovaDeviceMotion', ['$window', '$timeout', function($window, $timeout) {
+.directive('cordovaDeviceMotion', ['$document', '$window', '$timeout', function($document, $window, $timeout) {
     function watch(scope, frequency) {
         return $window.navigator.accelerometer.watchAcceleration(function(acceleration) {
             $timeout(function() {
@@ -50,7 +50,7 @@ angular.module('cordovaData.deviceMotion', [])
     return {
         restrict: 'A',
         link: function(scope, element, attrs) {
-            document.addEventListener("deviceready", function() {
+            $document[0].addEventListener("deviceready", function() {
                 if ($window.navigator.accelerometer.watchAcceleration !== undefined) {
                     var watchID;
                     

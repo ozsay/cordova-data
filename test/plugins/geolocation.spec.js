@@ -3,14 +3,16 @@ describe("geolocation", function() {
         $rootScope,
         $window,
         $timeout,
+        $document,
         _success;
 
     beforeEach(module('cordovaData.geolocation'));
 
-    beforeEach(inject(function(_$compile_, _$rootScope_, _$window_, _$timeout_) {
+    beforeEach(inject(function(_$compile_, _$rootScope_, _$window_, _$document_, _$timeout_) {
         $compile = _$compile_;
         $rootScope = _$rootScope_;
         $window = _$window_;
+        $document = _$document_;
         $timeout = _$timeout_;
         
         $window.navigator.geolocation.watchPosition = function(success, error, options) {
@@ -35,7 +37,7 @@ describe("geolocation", function() {
     
     it("Geolocation is injected into scope", function() {
         $compile('<div cordova-geolocation></div>')($rootScope);
-        document.dispatchEvent(new Event('deviceready'));
+        $document[0].dispatchEvent(new Event('deviceready'));
         
         setInterval(function() {
             _success({coords: {latitude: 150}});
@@ -49,7 +51,7 @@ describe("geolocation", function() {
  
     it("view is updated after change", function() {
         var element = $compile('<div cordova-geolocation>{{geolocation.coords.latitude}}</div>')($rootScope);
-        document.dispatchEvent(new Event('deviceready'));
+        $document[0].dispatchEvent(new Event('deviceready'));
         
         setInterval(function() {
             _success({coords: {latitude: 150}});
@@ -63,7 +65,7 @@ describe("geolocation", function() {
     
     it("scope is updated after every change", function() {
         var element = $compile('<div cordova-geolocation></div>')($rootScope);
-        document.dispatchEvent(new Event('deviceready'));
+        $document[0].dispatchEvent(new Event('deviceready'));
         
         var i = 0;
         
@@ -84,7 +86,7 @@ describe("geolocation", function() {
     
     it("Calling stop watch on scope destroy", function() {
         $compile('<div cordova-geolocation></div>')($rootScope);
-        document.dispatchEvent(new Event('deviceready'));
+        $document[0].dispatchEvent(new Event('deviceready'));
         
         setInterval(function() {
             _success({coords: {latitude: 150}});
@@ -103,7 +105,7 @@ describe("geolocation", function() {
     
     it("scope is updated with options", function() {
         var element = $compile('<div cordova-geolocation="{ maximumAge: 3000, timeout: 5000, enableHighAccuracy: true }"></div>')($rootScope);
-        document.dispatchEvent(new Event('deviceready'));
+        $document[0].dispatchEvent(new Event('deviceready'));
         
         $rootScope.$digest();
         
@@ -118,7 +120,7 @@ describe("geolocation", function() {
     
     it("restart watch after options changing", function() {
         var element = $compile('<div cordova-geolocation="options"></div>')($rootScope);
-        document.dispatchEvent(new Event('deviceready'));
+        $document[0].dispatchEvent(new Event('deviceready'));
         
         var i = 15;
         

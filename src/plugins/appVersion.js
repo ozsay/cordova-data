@@ -24,11 +24,11 @@ angular.module('cordovaData.appVersion', [])
  * </div>
  * ```
  */
-.directive('cordovaAppVersion', ['$window', '$timeout', function($window, $timeout) {
+.directive('cordovaAppVersion', ['$document', '$window', '$timeout', function($document, $window, $timeout) {
     return {
         restrict: 'A',
         link: function(scope, element, attrs) {
-            document.addEventListener("deviceready", function() {
+            $document[0].addEventListener("deviceready", function() {
                 $timeout(function() {
                     scope.appVersion = {};
 
