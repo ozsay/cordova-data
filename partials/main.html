@@ -9,7 +9,7 @@
     <h4>Device Information</h4>
     <p>In order to obtain the device information you probably need to write the following code (without <code>cordova-data</code>):</p>
     <pre class="prettyprint"><code class="lang-html" ng-non-bindable>&lt;div ng-controller=&quot;deviceController&quot;&gt;&#10;Device model: {{device.model}}&#10;&lt;/div&gt;</code></pre>
-    <pre class="prettyprint"><code class="lang-js" ng-non-bindable>myApp.controller('deviceController', ['$scope', '$window', '$document', function($scope, $window, $document) {&#10;  $document.addEventListener(&quot;deviceready&quot;, function() {&#10;    $scope.device = $window.device;&#10;  }, false);&#10;}]);</code></pre>
+    <pre class="prettyprint"><code class="lang-js" ng-non-bindable>myApp.controller('deviceController', ['$scope', '$window', '$document', function($scope, $window, $document) {&#10;  $document[0].addEventListener(&quot;deviceready&quot;, function() {&#10;    $scope.device = $window.device;&#10;  }, false);&#10;}]);</code></pre>
     <p>With <code>cordova-data</code>, the following code achieve the same goal:</p>
     <pre class="prettyprint"><code class="lang-html" ng-non-bindable>&lt;div cordova-device&gt;&#10;Device model: {{device.model}}&#10;&lt;/div&gt;</code></pre>
     <p>As you can see, the <code>cordova-device</code> directive adds the device information to the corresponding scope. No javascript required.</p>
